@@ -10,7 +10,7 @@
 #import "KeychainWrapper.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITextFieldDelegate>
 
 
 @end
