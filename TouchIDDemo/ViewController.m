@@ -10,7 +10,7 @@
 
 
 @interface ViewController ()
-@property (strong, nonatomic) KeychainWrapper * keychainWrapper;
+@property (strong, nonatomic) FXKeychain * keychainWrapper;
 @property (nonatomic,assign) int createButtonTag;
 @property (nonatomic,assign) int loginButtonTag;
 @property (nonatomic, strong) LAContext * localAuthContext;
@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+     _keychainWrapper = [FXKeychain defaultKeychain];
 
     [self setupUI];
     
@@ -73,10 +73,10 @@
         if (!hasLoginKey) {
             [[NSUserDefaults standardUserDefaults] setValue:self.usernameTextField.text forKey:@"username"];
         }
-        
-        _keychainWrapper = [[KeychainWrapper alloc] init];
-        [_keychainWrapper mySetObject:_passwordTextField.text forKey:kSecValueData];
-        [_keychainWrapper writeToKeychain];
+        //NSString * serviceName = [NSBundle mainBundle].bundleIdentifier;
+       
+        [_keychainWrapper setObject:_passwordTextField.text forKey:@"password"];
+       
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasLoginKey"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         _loginCreateButton.tag = _loginButtonTag;
@@ -98,9 +98,10 @@
         }
 
         if ( [_username length] > 0 && [_password length] > 0) {
-            NSString * passworkCheck = [_keychainWrapper myObjectForKey:kSecValueData];
+            NSString * passwordCheck = [_keychainWrapper objectForKey:@"password"];
+            NSLog(@"passwordCheck = %@",passwordCheck);
             NSString * usernameCheck = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
-            if ([_password isEqualToString:passworkCheck]  && [_username isEqualToString:usernameCheck]) {
+            if ([_password isEqualToString:passwordCheck]  && [_username isEqualToString:usernameCheck]) {
                 NSLog(@"login successful");
             } else {
                 NSLog(@"login unsuccessful");

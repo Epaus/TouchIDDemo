@@ -15,7 +15,8 @@
 		1D09A6621C5BDA7D00B63832 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D09A6601C5BDA7D00B63832 /* LaunchScreen.storyboard */; };
 		1D09A66D1C5BDA7D00B63832 /* TouchIDDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D09A66C1C5BDA7D00B63832 /* TouchIDDemoTests.m */; };
 		1D09A6781C5BDA7D00B63832 /* TouchIDDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D09A6771C5BDA7D00B63832 /* TouchIDDemoUITests.m */; };
-		1D09A6871C5BDAD800B63832 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D09A6861C5BDAD800B63832 /* KeychainWrapper.m */; };
+		1D09A68C1C5C1D0B00B63832 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D09A68B1C5C1D0B00B63832 /* Security.framework */; };
+		1D09A68E1C5C1D1A00B63832 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D09A68D1C5C1D1A00B63832 /* Foundation.framework */; };
 		C9724BDCBB9F00E4D7E6C8E8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0045AE964A7170857D5BE5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +55,8 @@
 		1D09A6731C5BDA7D00B63832 /* TouchIDDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchIDDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D09A6771C5BDA7D00B63832 /* TouchIDDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchIDDemoUITests.m; sourceTree = "<group>"; };
 		1D09A6791C5BDA7D00B63832 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1D09A6851C5BDAD800B63832 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainWrapper.h; path = "../../TouchMeInCD-starter/TouchMeIn/KeychainWrapper/KeychainWrapper.h"; sourceTree = "<group>"; };
-		1D09A6861C5BDAD800B63832 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainWrapper.m; path = "../../TouchMeInCD-starter/TouchMeIn/KeychainWrapper/KeychainWrapper.m"; sourceTree = "<group>"; };
+		1D09A68B1C5C1D0B00B63832 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1D09A68D1C5C1D1A00B63832 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		53D27E866CF9839EA19917B7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EBC3F7AA715680506ADB9F7C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D09A68E1C5C1D1A00B63832 /* Foundation.framework in Frameworks */,
+				1D09A68C1C5C1D0B00B63832 /* Security.framework in Frameworks */,
 				C9724BDCBB9F00E4D7E6C8E8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,8 +114,6 @@
 		1D09A6511C5BDA7D00B63832 /* TouchIDDemo */ = {
 			isa = PBXGroup;
 			children = (
-				1D09A6851C5BDAD800B63832 /* KeychainWrapper.h */,
-				1D09A6861C5BDAD800B63832 /* KeychainWrapper.m */,
 				1D09A6551C5BDA7D00B63832 /* AppDelegate.h */,
 				1D09A6561C5BDA7D00B63832 /* AppDelegate.m */,
 				1D09A6581C5BDA7D00B63832 /* ViewController.h */,
@@ -164,6 +165,8 @@
 		517300725CCB8395BDEB1E2E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D09A68D1C5C1D1A00B63832 /* Foundation.framework */,
+				1D09A68B1C5C1D0B00B63832 /* Security.framework */,
 				0E0045AE964A7170857D5BE5 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -351,7 +354,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D09A65A1C5BDA7D00B63832 /* ViewController.m in Sources */,
-				1D09A6871C5BDAD800B63832 /* KeychainWrapper.m in Sources */,
 				1D09A6571C5BDA7D00B63832 /* AppDelegate.m in Sources */,
 				1D09A6541C5BDA7D00B63832 /* main.m in Sources */,
 			);
