@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KeychainWrapper.h"
+#import <LocalAuthentication/LocalAuthentication.h>
 
 @interface ViewController : UIViewController
 
