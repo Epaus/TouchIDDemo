@@ -16,6 +16,7 @@
 		1D09A66D1C5BDA7D00B63832 /* TouchIDDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D09A66C1C5BDA7D00B63832 /* TouchIDDemoTests.m */; };
 		1D09A6781C5BDA7D00B63832 /* TouchIDDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D09A6771C5BDA7D00B63832 /* TouchIDDemoUITests.m */; };
 		1D09A6871C5BDAD800B63832 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D09A6861C5BDAD800B63832 /* KeychainWrapper.m */; };
+		C9724BDCBB9F00E4D7E6C8E8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0045AE964A7170857D5BE5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E0045AE964A7170857D5BE5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D09A64F1C5BDA7D00B63832 /* TouchIDDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchIDDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D09A6531C5BDA7D00B63832 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1D09A6551C5BDA7D00B63832 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +56,8 @@
 		1D09A6791C5BDA7D00B63832 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D09A6851C5BDAD800B63832 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainWrapper.h; path = "../../TouchMeInCD-starter/TouchMeIn/KeychainWrapper/KeychainWrapper.h"; sourceTree = "<group>"; };
 		1D09A6861C5BDAD800B63832 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainWrapper.m; path = "../../TouchMeInCD-starter/TouchMeIn/KeychainWrapper/KeychainWrapper.m"; sourceTree = "<group>"; };
+		53D27E866CF9839EA19917B7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EBC3F7AA715680506ADB9F7C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9724BDCBB9F00E4D7E6C8E8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +93,8 @@
 				1D09A66B1C5BDA7D00B63832 /* TouchIDDemoTests */,
 				1D09A6761C5BDA7D00B63832 /* TouchIDDemoUITests */,
 				1D09A6501C5BDA7D00B63832 /* Products */,
+				25D20E58AB6A9493D07F7AA3 /* Pods */,
+				517300725CCB8395BDEB1E2E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +152,23 @@
 			path = TouchIDDemoUITests;
 			sourceTree = "<group>";
 		};
+		25D20E58AB6A9493D07F7AA3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				53D27E866CF9839EA19917B7 /* Pods.debug.xcconfig */,
+				EBC3F7AA715680506ADB9F7C /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		517300725CCB8395BDEB1E2E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E0045AE964A7170857D5BE5 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,9 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D09A67C1C5BDA7D00B63832 /* Build configuration list for PBXNativeTarget "TouchIDDemo" */;
 			buildPhases = (
+				6555636750554EAACEBCAC94 /* Check Pods Manifest.lock */,
 				1D09A64B1C5BDA7D00B63832 /* Sources */,
 				1D09A64C1C5BDA7D00B63832 /* Frameworks */,
 				1D09A64D1C5BDA7D00B63832 /* Resources */,
+				B40BBC2F04C932D81937DE1C /* Embed Pods Frameworks */,
+				651889333CE771EC3FFDA9E1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,6 +296,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		651889333CE771EC3FFDA9E1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6555636750554EAACEBCAC94 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B40BBC2F04C932D81937DE1C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D09A64B1C5BDA7D00B63832 /* Sources */ = {
@@ -417,6 +492,7 @@
 		};
 		1D09A67D1C5BDA7D00B63832 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53D27E866CF9839EA19917B7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TouchIDDemo/Info.plist;
@@ -428,6 +504,7 @@
 		};
 		1D09A67E1C5BDA7D00B63832 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBC3F7AA715680506ADB9F7C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TouchIDDemo/Info.plist;
@@ -504,6 +581,7 @@
 				1D09A67E1C5BDA7D00B63832 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D09A67F1C5BDA7D00B63832 /* Build configuration list for PBXNativeTarget "TouchIDDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +590,7 @@
 				1D09A6811C5BDA7D00B63832 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D09A6821C5BDA7D00B63832 /* Build configuration list for PBXNativeTarget "TouchIDDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +599,7 @@
 				1D09A6841C5BDA7D00B63832 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

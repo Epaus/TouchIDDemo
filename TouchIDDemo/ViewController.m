@@ -18,6 +18,8 @@
 @property (nonatomic) UILabel * createInfoLabel;
 @property (nonatomic) UITextField * usernameTextField;
 @property (nonatomic) UITextField * passwordTextField;
+@property (nonatomic,strong) NSString * username;
+@property (nonatomic,strong) NSString * password;
 
 @end
 
@@ -34,16 +36,22 @@
    
     BOOL hasLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"hasLoginKey"];
     
-    if (/*hasLogin*/true) {
+    if (hasLogin) {
         NSLog(@"login user");
         [_loginCreateButton setTitle:@"Login" forState:UIControlStateNormal];
         _loginCreateButton.tag = _loginButtonTag;
         _createInfoLabel.hidden = YES;
+        [_loginCreateButton addTarget:self
+                   action:@selector(login)
+         forControlEvents:UIControlEventTouchUpInside];
     } else {
         NSLog(@"create user");
         [_loginCreateButton setTitle:@"Create" forState:UIControlStateNormal];
         _loginCreateButton.tag = _createButtonTag;
         _createInfoLabel.hidden = NO;
+        [_loginCreateButton addTarget:self
+                   action:@selector(createUser)
+         forControlEvents:UIControlEventTouchUpInside];
     }
 
     
@@ -55,10 +63,69 @@
         NSLog(@"can use touchID");
     }
 
-
-
-
 }
+
+- (void)createUser {
+
+
+    if ((![_usernameTextField.text isEqualToString:@""]) || (![_passwordTextField.text isEqualToString:@""])) {
+        BOOL hasLoginKey = [[NSUserDefaults standardUserDefaults] boolForKey:@"hasLoginKey"];
+        if (!hasLoginKey) {
+            [[NSUserDefaults standardUserDefaults] setValue:self.usernameTextField.text forKey:@"username"];
+        }
+        
+        _keychainWrapper = [[KeychainWrapper alloc] init];
+        [_keychainWrapper mySetObject:_passwordTextField.text forKey:kSecValueData];
+        [_keychainWrapper writeToKeychain];
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hasLoginKey"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        _loginCreateButton.tag = _loginButtonTag;
+    }
+    
+}
+- (void)login {
+    if (([_usernameTextField.text isEqualToString:@""]) || ([_passwordTextField.text isEqualToString:@""])) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"Please enter name and password."] preferredStyle:UIAlertControllerStyleAlert];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    } else {
+        if ([_usernameTextField.text length] > 4 ) {
+            _username = _usernameTextField.text;
+        }
+        if ([_passwordTextField.text length] > 4) {
+            _password = _passwordTextField.text;
+        }
+
+        if ( [_username length] > 0 && [_password length] > 0) {
+            NSString * passworkCheck = [_keychainWrapper myObjectForKey:kSecValueData];
+            NSString * usernameCheck = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
+            if ([_password isEqualToString:passworkCheck]  && [_username isEqualToString:usernameCheck]) {
+                NSLog(@"login successful");
+            } else {
+                NSLog(@"login unsuccessful");
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"Try Again."] preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* cancel = [UIAlertAction
+                                         actionWithTitle:@"Cancel"
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction * action)
+                                         {
+                                             _passwordTextField.text = @"";
+                                             [alert dismissViewControllerAnimated:YES completion:nil];
+                                             
+                                         }];
+                
+               
+                [alert addAction:cancel];
+                
+                [self presentViewController:alert animated:YES completion:nil];
+
+            }
+        }
+    }
+}
+
 - (void)setupUI {
     CGRect fullScreenRect = [[UIScreen mainScreen] bounds];
     float width = fullScreenRect.size.width;
@@ -74,6 +141,7 @@
     _usernameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _usernameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _usernameTextField.delegate = self;
+    _usernameTextField.text = @"";
     [self.view addSubview:_usernameTextField];
     
     _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake((width*0.5)-100,height*.30,200, 40)];
@@ -87,6 +155,7 @@
     _passwordTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _passwordTextField.secureTextEntry = YES;
     _passwordTextField.delegate = self;
+    _passwordTextField.text = @"";
     [self.view addSubview:_passwordTextField];
     
     
@@ -113,5 +182,9 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+
+
+
 
 @end
