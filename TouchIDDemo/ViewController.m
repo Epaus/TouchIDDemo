@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 
+
 @interface ViewController ()
 @property (strong, nonatomic) FXKeychain * keychainWrapper;
 @property (nonatomic,assign) int createButtonTag;
@@ -88,6 +89,7 @@
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"Please enter name and password."] preferredStyle:UIAlertControllerStyleAlert];
         
         [self presentViewController:alert animated:YES completion:nil];
+       
         return;
     } else {
         if ([_usernameTextField.text length] > 4 ) {
@@ -103,6 +105,11 @@
             NSString * usernameCheck = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
             if ([_password isEqualToString:passwordCheck]  && [_username isEqualToString:usernameCheck]) {
                 NSLog(@"login successful");
+                
+                ParadiseViewController * paradiseVC = [[ParadiseViewController alloc] init];
+                 [self presentViewController:paradiseVC animated:NO completion:nil];
+                
+                
             } else {
                 NSLog(@"login unsuccessful");
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"Try Again."] preferredStyle:UIAlertControllerStyleAlert];

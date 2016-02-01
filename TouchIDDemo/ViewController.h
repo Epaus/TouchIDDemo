@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <FXKeychain/FXKeychain.h>
 #import <LocalAuthentication/LocalAuthentication.h>
+#import "ParadiseViewController.h"
 
 @interface ViewController : UIViewController <UITextFieldDelegate>
 
