@@ -26,7 +26,6 @@
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(46.0,463.0,700,129)];
     _titleLabel.text = @"Welcome to this password protected paradise.";
     _titleLabel.textColor = [UIColor whiteColor];
-    //[_titleLabel setFont:[UIFont fontWithName:@"System" size:30]];
     [_titleLabel setFont: [_titleLabel.font fontWithSize: 30]];
     [self.view addSubview:_backgroundImageView];
     [self.view addSubview:_titleLabel];
@@ -47,7 +46,9 @@
 }
 
 - (void)byeBye {
+        
     [self dismissViewControllerAnimated:NO completion:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
